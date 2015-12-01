@@ -1,0 +1,36 @@
+{
+  "name": "ionic-modal-select",
+  "version": "1.0.0",
+  "homepage": "https://github.com/inmagik/ionic-modal-select",
+  "authors": [
+    "Mauro Bianchi <bianchimro@gmail.com>"
+  ],
+  "description": "Modal select for ionic framework",
+  "main": [
+    "dist/ionic-modal-select.js",
+    "dist/ionic-modal-select.min.js"
+  ],
+  "keywords": [
+    "ionic",
+    "modal",
+    "select"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "1.0.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.0.0",
+    "commit": "c16f8938d31c384dfe21460b6e88acf290508488"
+  },
+  "_source": "git://github.com/inmagik/ionic-modal-select.git",
+  "_target": "~1.0.0",
+  "_originalSource": "ionic-modal-select",
+  "_direct": true
+}

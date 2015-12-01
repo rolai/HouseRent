@@ -1,0 +1,47 @@
+/* Empty. Add your own CSS if you like */
+.header-title {
+	font-size: 1.2em;
+	font-style: bold;
+}
+
+.house-title {
+	background-color: lightgreen;
+}
+
+.recent-search {
+	padding: 10px 10px;
+}
+
+.recent-search-title {
+	text-align: center;
+}
+
+.recent-search-item {
+  line-height: 1.2em;
+  color: white;
+  margin: 5px 10px 0 0;
+  padding: 10px 10px;
+  background-color: #33cd5f;
+  float: left;
+  border-radius: 5px;
+}
+
+.loading-img {
+	display: block;
+	margin: 10px auto;
+	width: 48px;
+	height: 48px;
+}
+
+.info-message {
+	text-align: center;
+	font-size: 0.9em;
+	color: lightgrey;
+	margin-top: 30px;
+}
+
+.my-footer{
+	position: absolute;
+	bottom: 20px;
+	width: 100%;
+}
