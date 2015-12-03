@@ -25,3 +25,5 @@ ionic platform add android
 ionic build andriod
 ionic serve
 ```
+
+[Download the app](http://fir.im/vr28)
