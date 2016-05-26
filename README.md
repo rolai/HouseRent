@@ -2,6 +2,7 @@
 HouseRent is an app to search the house rent information by city and locations.  
 Ionic framework is used in the app development.
 
+The server code of HouseRent: [HouseRentServer](https://github.com/rolai/HouseRentServer)  
 
 Steps to setup the ionic project:       
 ```
