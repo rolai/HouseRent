@@ -3,7 +3,7 @@ angular.module('starter.controllers', [])
 .controller('HomeCtrl', function($scope, $state, LocalStorage) {
   $scope.keyword = null;
   $scope.city = LocalStorage.get("city", "北京");
-  $scope.cityList = ["北京", "上海", "广州", "深圳", "苏州", "成都", "南京", "天津", "杭州", "厦门"];
+  $scope.cityList = ["北京", "上海", "广州", "深圳",  "成都",  "杭州", "武汉"];
   $scope.recentKeywords = LocalStorage.getRecentKeyword();
 
   $scope.search = function(keyword) {
