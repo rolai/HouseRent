@@ -15,8 +15,8 @@
         </div>
       </div>
       <div class="item item-text-wrap">
-        <p>{{house.uptime}}</p>
-        <p>{{house.text}}</p>
+        <p>{{house.postTime}}</p>
+        <p>{{house.content.length <= 256 ? house.content : house.content.substr(0, 256) + '...'}}</p>
       </div>
     </div>
     <div ng-show="houses.length <= 0 && showInfoMessage" class="info-message">

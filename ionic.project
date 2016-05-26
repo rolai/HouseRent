@@ -1,6 +1,6 @@
 {
   "name": "HouseRent",
-  "app_id": "",
+  "app_id": "b665b667",
   "gulpStartupTasks": [
     "sass",
     "watch"
