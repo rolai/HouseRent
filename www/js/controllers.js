@@ -6,6 +6,10 @@ angular.module('starter.controllers', [])
   $scope.cityList = ["北京", "上海", "广州", "深圳",  "成都",  "杭州", "武汉"];
   $scope.recentKeywords = LocalStorage.getRecentKeyword();
 
+  $scope.onSelectCity = function(newValue, oldValue) {
+     $scope.city = newValue;
+  }
+  
   $scope.search = function(keyword) {
     LocalStorage.set("city", $scope.city);
   	LocalStorage.addRecentKeyword(keyword);
@@ -22,7 +26,7 @@ angular.module('starter.controllers', [])
 	$scope.houses  = [];
 	$scope.keyword = $stateParams.keyword;
     $scope.city = $stateParams.city;
-	$scope.page = 1;
+	$scope.page = 0;
 	$scope.no_more_data = false;
 	$scope.showInfoMessage = false;
 
@@ -41,7 +45,7 @@ angular.module('starter.controllers', [])
           data: {
             city: city,
             keyword: keyword,
-            page: page - 1
+            page: page
           }
       }).success(function(response){
             $scope.$broadcast('scroll.infiniteScrollComplete');
@@ -84,13 +88,13 @@ angular.module('starter.controllers', [])
 
 	$scope.loadMore = function () {
 		if (!$scope.no_more_data) {
-			$scope.page += 1;
 			requestHouseRentInfo($scope.city, $scope.keyword, $scope.page);
+            $scope.page += 1;
 		}
 	}
 
 	$scope.$on('$stateChangeSuccess', function() {
-    $scope.loadMore();
-  });
+        $scope.loadMore();
+    });
 
 });

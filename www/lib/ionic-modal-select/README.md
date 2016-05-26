@@ -2,14 +2,16 @@
 
 Modal select for Ionic Framework based on [$ionicModal](http://ionicframework.com/docs/api/service/$ionicModal/)
 
-Demo [here](http://codepen.io/bianchimro/pen/epYYQO?editors=101)
+See all docs and examples on the [project site](http://inmagik.github.io/ionic-modal-select).
+
+We also have a simple [Codepen demo](http://codepen.io/bianchimro/pen/epYYQO?editors=101).
 
 ![animated example](https://dl.dropboxusercontent.com/u/6178230/screenshots/ionic-modal-picker.gif)
-
 
 ## Features
 
 * supports long list of object via collection-repeat
+* optional search bar
 * supports unsetting the chosen value (optional)
 * customizable modal classes, modal header and footer classes
 * customizable buttons text
@@ -66,18 +68,36 @@ The final value bound to your model will be determined as follow:
 option|meaning|accepted values|default
 ---|---|---|---
 `options`|List of options to choose from|Array||
+`options-expression`|The expression indicating how to enumerate a the options collection, of the format `variable in expression` – where variable is the user defined loop variable and expression is a scope expression giving the collection to enumerate. For example: `album in artist.albums or album in artist.albums | orderBy:'name'`.|expression||
 `option-getter`|Optional method to get the value from the chosen item|function|not set|
 `option-property`|Optional property name to get as model value from the chosen item|string|not set|
 `modal-class`|The class for the modal (set on `<ion-modal-view>`|string|''
 `selected-class`|The class applied to the currently selected option (if any) in the modal list|string|'option-selected'
+`on-select`|Callback triggered on object select. Takes two arguments, `newValue` and `oldValue` with obvious meaning.|function call with arguments `newValue` and `oldValue`|not set
+`on-reset`|Callback triggered when value is resetted using the relevant ui interface. Takes no arguments.|function call|not set
 `modal-title`|The title shown on the modal header|string|'Select an option'
 `header-footer-class`|The class for header and footer of the modal|string|'bar-stable'
-`cancel-button`|Text of the button for closing the modal without changing the color|string|'Cancel'
+`cancel-button`|Text of the button for closing the modal without changing the value|string|'Cancel'
 `reset-button`|Text of the button for unsetting value in the modal dialog|string|'Reset'
 `hide-reset`|Hides the button for unsetting value in the modal dialog|string. Set to 'true' for hiding the button|false
 `use-collection-repeat`|Forces use of collection-repeat or ng-repeat for rendering options in the modal.| string "true", "false" | not set (automatically set according to number of options and `short-list-break` attribute)
-`short-list-break`|The maximum number of item in list to be rendered with `ng-repeat`.(if `use-collection-repeat` is not set) If the list has a number of colors greater than this attribute it will be rendered with ionic `collection-repeat` directive instead. (see also `load-list-message` option)|integer|10
-`load-list-message`|Message to be shown when loading a long list of color in the modal|string|'Loading'
+`short-list-break`|The maximum number of item in list to be rendered with `ng-repeat`.(if `use-collection-repeat` is not set) If the list has a number of options greater than this attribute it will be rendered with ionic `collection-repeat` directive instead. (see also `load-list-message` option)|integer|10
+`load-list-message`|Message to be shown when loading a long list of options in the modal|string|'Loading'
+`has-search`|Whether to show a search bar to filter options.|set to "true" for showing the search bar|undefined
+`search-placeholder`|String placeholder in search bar.|string|'Search'
+`sub-header-class`|Class to be applied to the subheader containing the search bar (makes sense only if `has-search="true`) |string|'bar-stable'
+`cancel-search-button`|Text for the button for clearing search text (makes sense only if `has-search="true`) |string|'Clear'
+`clear-search-on-select`|Tells the directive to not clear the search bar content after user selection. Set to `false` to prevent clearing the search text.|boolean|true
+
+
+### Passing in options
+
+The `modal-select` directive must be provided with a set of options to choose from
+
+This can be done in two ways:
+
+* via the `options` attribute, that accepts an array of values or objects. The directive will watch for changes in this array and modify its options accordingly.
+* via the `options-expression` attribute, that accepts an expression similar to what you would use with ionic `collection-repeat` directive, of the format `variable in expression` – where variable is the user defined loop variable and expression is a scope expression giving the collection to enumerate. For example: `album in artist.albums or album in artist.albums | orderBy:'name'`. This allows you to apply ordering or filtering without acting on the original array.
 
 
 ### Options templates
@@ -103,6 +123,12 @@ Will be rendered in the modal as :
 ```
 
 
+## Search bar
+From version 1.1.0 you can include a search bar into the modal for filtering options by simply adding the attribute `has-search="true"` to your `modal-select` element.
+
+Filtering is implemented with the angular `filter` filter, which searches recursively in all properties of the objects passed in as options. This means that you cannot search on "computed properties" right now. For example if you are using a custom setter you will be only able to search the original properties of the options. 
+
+
 ### Examples
 #### Simplest one.
 This example shows a modal for choosing a number between 1 and 5.
@@ -122,6 +148,20 @@ In your template:
     </div>
 </button>
 ```
+
+#### Including a search bar
+To include a search bar in the previous example, just add `has-search="true"`:
+
+```html
+<button class="button button-positive" modal-select ng-model="someModel" options="selectables" modal-title="Select a number" has-search="true">
+    Select it
+    <div class="option">
+        {{option}}
+    </div>
+</button>
+```
+
+
 
 #### Objects as options
 In the following example we use some objects as options.
@@ -152,7 +192,10 @@ If we do not set `option-getter` or `option-property` attributes, the model is a
 </button>
 ```
 
-##### 2. Setting and a property
+
+
+
+##### 2. Setting a property
 If `option-property` attribute is set to a string, the bound model assigned that  property of the option object when an option is selected. For example if we set `option-getter="name"`, we get back the 'name' property of our options.
 
 ```html
@@ -185,9 +228,7 @@ $scope.getOption = function(option){
 We get back the phrase "Mauro:navigator", "Silvia:chef" or "Merlino:canaglia" if we click the previous defined options.
 
 
-##### More examples to come.
-
-See this [codepen](http://codepen.io/bianchimro/pen/epYYQO?editors=101) for now.
+##### More examples [on the project site](http://inmagik.github.io/ionic-modal-select).
 
 ## Support this project
 

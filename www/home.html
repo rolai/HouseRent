@@ -1,7 +1,7 @@
 <ion-view class="header-title" title="无忧租房">
   <ion-nav-bar class="bar-balanced">
     <ion-nav-buttons side="left">
-      <button class="button button-clear button-light" modal-select="city" ng-model="city" options="cityList" modal-title="请选择您所在城市">
+      <button class="button button-clear button-light" modal-select="city" ng-model="city" on-select="onSelectCity(newValue, oldValue)" options="cityList" modal-title="请选择您所在城市">
         {{city}}
         <div class="option">
           {{option}}
@@ -17,7 +17,7 @@
       <button class="button button-block button-balanced" ng-disabled="!keyword || keyword === ''" ng-click="search(keyword)">搜索一下</button>
     </div>
     <div class="recent-search">
-      <div ng-repeat="key in recentKeywords" class="recent-search-item" ng-click="search(key)">{{key}}</div>
+      <div ng-repeat="key in recentKeywords" class="recent-search-item" ng-click="search(key, city)">{{key}}</div>
     </div>
   </ion-content>
   <div class="my-footer info-message">
