@@ -27,4 +27,14 @@ ionic build andriod
 ionic serve
 ```
 
+About the App
+
 [Download the app](http://fir.im/vr28)
+
+![Image of QR Code](https://raw.githubusercontent.com/rolai/HouseRent/master/resources/screenshots/qr.png)
+
+
+App screenshots:
+
+![Image of Screenshot 1](https://raw.githubusercontent.com/rolai/HouseRent/master/resources/screenshots/screenshot_1.png)
+![Image of Screenshot 3](https://raw.githubusercontent.com/rolai/HouseRent/master/resources/screenshots/screenshot_3.png)
