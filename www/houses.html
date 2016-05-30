@@ -9,13 +9,14 @@
     <div ng-repeat="house in houses" class="card" ng-click="openDetails(house.url)">
       <div class="item item-divider item-text-wrap house-title">
         <h2>{{house.title}}</h2>
-        <div ng-show="house.prices && house.prices.length > 0" style="color:red;">
-          <span>租金: </span>
-          <span ng-repeat="price in house.prices">{{price + " "}}</span>
+        <div ng-show="house.prices && house.prices.length > 0 || house.model || house.area" style="color:red;">
+          <span ng-show="house.prices && house.prices.length > 0">租金: </span><span ng-repeat="price in house.prices">{{price + " "}}</span>
+          <span ng-show="house.model">{{house.model}}</span>
+          <span ng-show="house.area">{{house.area}}平米</span>
         </div>
       </div>
       <div class="item item-text-wrap">
-        <p>{{house.postTime}}</p>
+        <p><span>发布时间: {{house.postTime}}</span></p>
         <p>{{house.content.length <= 256 ? house.content : house.content.substr(0, 256) + '...'}}</p>
       </div>
     </div>
